@@ -1,0 +1,14 @@
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/bin/Debug/net9.0/HelloWorld
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/bin/Debug/net9.0/HelloWorld.deps.json
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/bin/Debug/net9.0/HelloWorld.runtimeconfig.json
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/bin/Debug/net9.0/HelloWorld.dll
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/bin/Debug/net9.0/HelloWorld.pdb
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/HelloWorld.GeneratedMSBuildEditorConfig.editorconfig
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/HelloWorld.AssemblyInfoInputs.cache
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/HelloWorld.AssemblyInfo.cs
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/HelloWorld.csproj.CoreCompileInputs.cache
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/HelloWorld.dll
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/refint/HelloWorld.dll
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/HelloWorld.pdb
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/HelloWorld.genruntimeconfig.cache
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/ref/HelloWorld.dll
