@@ -6,31 +6,65 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            string[] myGroceryArray = new string[2];
+            int myInt = 5;
+            int mySecondInt = 10;
+            
+            // Console.WriteLine(myInt);
+            
+            // myInt++;
 
-            myGroceryArray[0] = "Cheese";
-            myGroceryArray[1] = "Milk";
+            // Console.WriteLine(myInt);
 
-            // List<string> myGroceryList = new List<string>();
-            // myGroceryList.Add("Ice Cream");
+            // myInt+= 7;
 
-            List<string> myGroceryList = ["Ice Cream", "Crackers"];
+            // myInt -= 8;
 
-            Console.WriteLine(myGroceryList[0]);
+            // Console.WriteLine(myInt);
 
-            IEnumerable<string> myGroceryEnumerable = myGroceryList;
+            // Console.WriteLine(myInt * mySecondInt);
+            // Console.WriteLine(mySecondInt / myInt);
 
-            List<string> mySecondGroceryList = myGroceryEnumerable.ToList();
+            // Console.WriteLine(mySecondInt + myInt);
+            // Console.WriteLine(myInt - mySecondInt);
 
-            string[,] myMultiDemensionalArray = {{"a","b"},{"c","d"},{"e","f"}};
-            Console.WriteLine(myMultiDemensionalArray[0,0]);
-            Console.WriteLine(myMultiDemensionalArray[2,1]);
+            // string myString = "test";
 
-            Dictionary<string, int> groceryPrices = new Dictionary<string, int>();
+            // Console.WriteLine(myString);
 
-            groceryPrices["Cheese"] = 5;
+            // myString += "second part";
 
-            Console.WriteLine(groceryPrices["Cheese"]);
+            // Console.WriteLine(myString);
+
+            if (myInt < mySecondInt) 
+            {
+                myInt += 10;
+            }
+
+            Console.WriteLine(myInt);
+
+            string myCow = "Cow";
+            string myCapitalizedCow = "Cow";
+
+            if (myCow == myCapitalizedCow)
+            {
+                Console.WriteLine("Equal");
+            } else 
+            {
+                Console.WriteLine("Not Equal");
+            }
+
+            switch (myCow)
+            {
+                case "cow":
+                    Console.WriteLine("Lowercase");
+                    break;
+                case "Cow":
+                    Console.WriteLine("Uppercase");
+                    break;
+                default:
+                    Console.WriteLine("Default Ran");
+                    break;
+            }
         }
     }
 }
