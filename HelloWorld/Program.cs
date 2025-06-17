@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Data;
+using System.Collections.Generic;
 using Dapper;
 using HelloWorld.Models;
-using Microsoft.Data.SqlClient;
 using HelloWorld.Data;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 
 namespace HelloWorld
 {
@@ -11,11 +15,7 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-          DataContextDapper dapper = new DataContextDapper();
-          DataContextEF entityFramework = new DataContextEF();
-
-          DateTime rightNow = dapper.LoadDataSingle<DateTime>("SELECT GETDATE()");
-
+        
             // Console.WriteLine(rightNow);
 
           Computer myComputer = new Computer()
@@ -27,9 +27,6 @@ namespace HelloWorld
             Price = 943.87m,
             VideoCard = "RTX 2060"
           };
-
-          entityFramework.Add(myComputer);
-          entityFramwork.SaveChanges();
 
           string formattedDate = myComputer.ReleaseDate.ToString("yyyy-MM-dd HH:mm:ss");
 
@@ -48,49 +45,9 @@ namespace HelloWorld
            + "','" + myComputer.HasWifi
            +"')";
 
-            // Console.WriteLine(sql);
+           using StreamWriter openFile = new("log.txt", append: true);
 
-          bool result = dapper.ExecuteSql(sql);
-
-          //  Console.WriteLine(result);
-
-          string sqlSelect = @"
-            SELECT 
-              Computer.Motherboard,
-              Computer.HasWifi,
-              Computer.HasLTE,
-              Computer.ReleaseDate,
-              Computer.Price,
-              Computer.VideoCard FROM TutorialAppSchema.Computer";
-
-              IEnumerable<Computer> computers = dapper.LoadData<Computer>(sqlSelect);
-
-              foreach(Computer singleComputer in computers)
-              {
-                Console.WriteLine("'" + myComputer.Motherboard 
-                  + "','" + myComputer.HasWifi
-                  + "','" + myComputer.HasLTE
-                  + "','" + formattedDate
-                  + "','" + myComputer.Price
-                  + "','" + myComputer.HasWifi
-                  +"')");
-          }
-              IEnumerable<Computer>? computersEf = entityFramework.Computer?.ToList<Computer>();
-
-              if (computersEF != null)
-              {
-              foreach(Computer singleComputer in computersEf)
-              {
-                Console.WriteLine("'" + myComputer.Motherboard 
-                  + "','" + myComputer.HasWifi
-                  + "','" + myComputer.HasLTE
-                  + "','" + formattedDate
-                  + "','" + myComputer.Price
-                  + "','" + myComputer.HasWifi
-                  +"')");
-          }
-          }
+           openFile.WriteLine(sql);
         }
-        
     }
 }
