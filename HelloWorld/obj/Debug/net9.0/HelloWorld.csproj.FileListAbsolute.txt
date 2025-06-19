@@ -78,3 +78,4 @@
 /Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/HelloWorld.pdb
 /Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/HelloWorld.genruntimeconfig.cache
 /Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/obj/Debug/net9.0/ref/HelloWorld.dll
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/HelloWorld/bin/Debug/net9.0/Newtonsoft.Json.dll

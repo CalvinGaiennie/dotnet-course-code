@@ -13,3 +13,80 @@ INSERT INTO TutorialAppSchema.Computer (
               Price,
               VideoCard
            ) VALUES ('Z690','True','False','2025-06-17 13:53:12','943.87','True')
+INSERT INTO TutorialAppSchema.Computer (
+              Motherboard,
+              HasWifi,
+              HasLTE,
+              ReleaseDate,
+              Price,
+              VideoCard
+           ) VALUES ('Z690','True','False','2025-06-19 11:49:29','943.87','True')
+INSERT INTO TutorialAppSchema.Computer (
+              Motherboard,
+              HasWifi,
+              HasLTE,
+              ReleaseDate,
+              Price,
+              VideoCard
+           ) VALUES ('Z690','True','False','2025-06-19 11:49:38','943.87','True')
+INSERT INTO TutorialAppSchema.Computer (
+              Motherboard,
+              HasWifi,
+              HasLTE,
+              ReleaseDate,
+              Price,
+              VideoCard
+           ) VALUES ('Z690','True','False','2025-06-19 11:49:43','943.87','True')
+INSERT INTO TutorialAppSchema.Computer (
+              Motherboard,
+              HasWifi,
+              HasLTE,
+              ReleaseDate,
+              Price,
+              VideoCard
+           ) VALUES ('Z690','True','False','2025-06-19 11:49:53','943.87','True')
+INSERT INTO TutorialAppSchema.Computer (
+              Motherboard,
+              HasWifi,
+              HasLTE,
+              ReleaseDate,
+              Price,
+              VideoCard
+           ) VALUES ('Z690','True','False','2025-06-19 11:51:36','943.87','True')
+
+INSERT INTO TutorialAppSchema.Computer (
+              Motherboard,
+              HasWifi,
+              HasLTE,
+              ReleaseDate,
+              Price,
+              VideoCard
+           ) VALUES ('Z690','True','False','2025-06-19 11:51:45','943.87','True')
+
+INSERT INTO TutorialAppSchema.Computer (
+              Motherboard,
+              HasWifi,
+              HasLTE,
+              ReleaseDate,
+              Price,
+              VideoCard
+           ) VALUES ('Z690','True','False','2025-06-19 11:57:46','943.87','True')
+
+INSERT INTO TutorialAppSchema.Computer (
+              Motherboard,
+              HasWifi,
+              HasLTE,
+              ReleaseDate,
+              Price,
+              VideoCard
+           ) VALUES ('Z690','True','False','2025-06-19 11:57:55','943.87','True')
+
+INSERT INTO TutorialAppSchema.Computer (
+              Motherboard,
+              HasWifi,
+              HasLTE,
+              ReleaseDate,
+              Price,
+              VideoCard
+           ) VALUES ('Z690','True','False','2025-06-19 11:58:50','943.87','True')
+
