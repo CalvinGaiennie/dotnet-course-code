@@ -82,13 +82,22 @@ namespace HelloWorld
     if (computersSystem != null)
     {
       IEnumerable<Computer> computerResult = mapper.Map<IEnumerable<Computer>>(computersSystem);
-
-      foreach (Computer computer in computerResult)
-      {
-        Console.WriteLine(computer.Motherboard);
-      }
+      Console.WriteLine(computerResult.Count());
+      // foreach (Computer computer in computerResult)
+      // {
+      //   Console.WriteLine(computer.Motherboard);
+      // }
     }
+    IEnumerable<Computer>? computersSystemJsonPropertyMapping = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<Computer>>(computersJson);
 
+     if (computersSystemJsonPropertyMapping != null)
+    {
+      Console.WriteLine(computersSystemJsonPropertyMapping.Count());
+      // foreach (Computer computer in computersSystemJsonPropertyMapping)
+      // {
+      //   Console.WriteLine(computer.Motherboard);
+      // }
+    }
 
       // IEnumerable<Computer>? computers = JsonConvert.DeserializeObject<IEnumerable<Computer>>(computersJson);
 
