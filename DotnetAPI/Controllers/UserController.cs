@@ -1,3 +1,6 @@
+using DotnetApi.Data;
+using DotnetApi.Dtos;
+using DotnetApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetApi.Controllers;
@@ -58,7 +61,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("AddUser")]
-    public IActionResult AddUser(User user)
+    public IActionResult AddUser(UserDto user)
     {
         string sql = @"INSERT INTO TutorialAppSchema.Users(        
             [FirstName], 
@@ -80,6 +83,19 @@ public class UserController : ControllerBase
         }
 
         throw new Exception("Failed to Add User");
+    }
+
+    [HttpDelete("DeleteUser/{userId}")]
+    public IActionResult DeleteUser(int userId)
+    {
+        string sql = @"DELETE FROM TutorialAppSchema.Users WHERE UserId = " + userId;
+
+        if (_dapper.ExecuteSql(sql))
+        {
+            return Ok();
+        }
+
+        throw new Exception("Failed to Delete User");
     }
 
 }
