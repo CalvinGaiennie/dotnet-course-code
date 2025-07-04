@@ -10,9 +10,11 @@ namespace DotnetApi.Controllers;
 public class UserEFController : ControllerBase
 {
     DataContextEF _entityFramework;
-    public UserEFController(IConfiguration config)
+    IUserRepository _userRepository;
+    public UserEFController(IConfiguration config, IUserRepository userRepository)
     {
         _entityFramework = new DataContextEF(config);
+        _userRepository = userRepository;
     }
 
     [HttpGet("GetUsers")]
@@ -47,7 +49,7 @@ public class UserEFController : ControllerBase
             userDb.LastName = user.LastName;
             userDb.Email = user.Email;
             userDb.Gender = user.Gender;
-            if (_entityFramework.SaveChanges() > 0)
+            if (_userRepository.SaveChanges())
             {
                 return Ok();
             }
@@ -67,9 +69,9 @@ public class UserEFController : ControllerBase
         userDb.LastName = user.LastName;
         userDb.Email = user.Email;
         userDb.Gender = user.Gender;
-        _entityFramework.Users.Add(userDb);
+        _userRepository.AddEntity<User>(userDb);
 
-        if (_entityFramework.SaveChanges() > 0)
+        if (_userRepository.SaveChanges())
         {
             return Ok();
         }
@@ -86,8 +88,8 @@ public class UserEFController : ControllerBase
 
         if (userDb != null)
         {
-            _entityFramework.Users.Remove(userDb);
-            if (_entityFramework.SaveChanges() > 0)
+            _userRepository.RemoveEntity<User>(userDb);
+            if (_userRepository.SaveChanges())
             {
                 return Ok();
             }
@@ -112,8 +114,8 @@ public class UserEFController : ControllerBase
     [HttpPost("UserSalary")]
     public IActionResult PostUserSalaryEF(UserSalary userSalaryForInsert)
     {
-        _entityFramework.UserSalary.Add(userSalaryForInsert);
-        if (_entityFramework.SaveChanges() > 0)
+        _userRepository.AddEntity<UserSalary>(userSalaryForInsert);
+        if (_userRepository.SaveChanges())
         {
             return Ok(userSalaryForInsert);
         }
@@ -131,7 +133,7 @@ public class UserEFController : ControllerBase
         if (userSalaryDb != null)
         {
             userSalaryDb.Salary = userSalaryForUpdate.Salary;
-            if (_entityFramework.SaveChanges() > 0)
+            if (_userRepository.SaveChanges())
             {
                 return Ok(userSalaryForUpdate);
             }
@@ -150,8 +152,8 @@ public class UserEFController : ControllerBase
 
         if (userSalaryDb != null)
         {
-            _entityFramework.UserSalary.Remove(userSalaryDb);
-            if (_entityFramework.SaveChanges() > 0)
+            _userRepository.RemoveEntity<UserSalary>(userSalaryDb);
+            if (_userRepository.SaveChanges())
             {
                 return Ok();
             }
@@ -187,9 +189,9 @@ public class UserEFController : ControllerBase
         userJobInfoDb.UserId = userJobInfoForInsert.UserId;
         userJobInfoDb.Department = userJobInfoForInsert.Department;
         userJobInfoDb.JobTitle = userJobInfoForInsert.JobTitle;
-        _entityFramework.UserJobInfo.Add(userJobInfoDb);
+        _userRepository.AddEntity<UserJobInfo>(userJobInfoDb);
 
-        if (_entityFramework.SaveChanges() > 0)
+        if (_userRepository.SaveChanges())
         {
             return Ok(userJobInfoForInsert);
         }
@@ -208,7 +210,7 @@ public class UserEFController : ControllerBase
         {
             userJobInfoDb.Department = userJobInfoForUpdate.Department;
             userJobInfoDb.JobTitle = userJobInfoForUpdate.JobTitle;
-            if (_entityFramework.SaveChanges() > 0)
+            if (_userRepository.SaveChanges())
             {
                 return Ok(userJobInfoForUpdate);
             }
@@ -227,8 +229,8 @@ public class UserEFController : ControllerBase
 
         if (userJobInfoDb != null)
         {
-            _entityFramework.UserJobInfo.Remove(userJobInfoDb);
-            if (_entityFramework.SaveChanges() > 0)
+            _userRepository.RemoveEntity<UserJobInfo>(userJobInfoDb);
+            if (_userRepository.SaveChanges())
             {
                 return Ok();
             }
