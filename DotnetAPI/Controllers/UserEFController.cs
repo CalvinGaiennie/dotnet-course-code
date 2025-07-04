@@ -97,133 +97,144 @@ public class UserEFController : ControllerBase
         throw new Exception("Failed to Get User");
     }
 
-    //     //////////////////////////////////////////
-    //     /// Salary
-    //     //////////////////////////////////////////
+    //////////////////////////////////////////
+    /// Salary
+    //////////////////////////////////////////
 
-    //     [HttpGet("UserSalary/{userId}")]
-    //     public IActionResult GetUserSalary(int userId)
-    //     {
-    //         string sql = @"SELECT UserSalary.UserId,
-    //             UserSalary.Salary
-    //         FROM TutorialAppSchema.UserSalary
-    //         WHERE UserSalary.UserId = " + userId.ToString();
+    [HttpGet("UserSalary/{userId}")]
+    public IEnumerable<UserSalary> GetUserSalary(int userId)
+    {
+        return _entityFramework.UserSalary
+            .Where(u => u.UserId == userId)
+            .ToList();
+    }
 
-    //         IEnumerable<UserSalary> userSalary = _dapper.LoadData<UserSalary>(sql);
+    [HttpPost("UserSalary")]
+    public IActionResult PostUserSalaryEF(UserSalary userSalaryForInsert)
+    {
+        _entityFramework.UserSalary.Add(userSalaryForInsert);
+        if (_entityFramework.SaveChanges() > 0)
+        {
+            return Ok(userSalaryForInsert);
+        }
 
-    //         return Ok(userSalary);
-    //     }
+        throw new Exception("Failed to Add User Salary");
+    }
 
-    //     [HttpPost("UserSalary")]
-    //     public IActionResult PostUserSalary(UserSalary userSalaryForInsert)
-    //     {
-    //         string sql = @"
-    //         INSERT INTO TutorialAppSchema.UserSalary(
-    //             UserId,
-    //             Salary
-    //         ) VALUES (" + userSalaryForInsert.UserId
-    //             + ", " + userSalaryForInsert.Salary
-    //             + ")";
+    [HttpPut("UserSalary")]
+    public IActionResult PutUserSalary(UserSalary userSalaryForUpdate)
+    {
+        UserSalary? userSalaryDb = _entityFramework.UserSalary
+            .Where(u => u.UserId == userSalaryForUpdate.UserId)
+            .FirstOrDefault<UserSalary>();
 
-    //         if (_dapper.ExecuteSql(sql))
-    //         {
-    //             return Ok(userSalaryForInsert);
-    //         }
+        if (userSalaryDb != null)
+        {
+            userSalaryDb.Salary = userSalaryForUpdate.Salary;
+            if (_entityFramework.SaveChanges() > 0)
+            {
+                return Ok(userSalaryForUpdate);
+            }
 
-    //         throw new Exception("Failed to Add User Salary");
-    //     }
-    //     [HttpPut("UserSalary")]
-    //     public IActionResult PutUserSalary(UserSalary userSalaryForUpdate)
-    //     {
-    //         string sql = @"
-    //         UPDATE TutorialAppSchema.UserSalary
-    //         SET Salary = " + userSalaryForUpdate.Salary +
-    //         " WHERE UserId = " + userSalaryForUpdate.UserId.ToString();
+            throw new Exception("Failed to Update User Salary");
+        }
+        throw new Exception("Failed to Get User Salary");
+    }
 
-    //         if (_dapper.ExecuteSql(sql))
-    //         {
-    //             return Ok(userSalaryForUpdate);
-    //         }
+    [HttpDelete("UserSalary/{userId}")]
+    public IActionResult DeleteUserSalary(int userId)
+    {
+        UserSalary? userSalaryDb = _entityFramework.UserSalary
+            .Where(u => u.UserId == userId)
+            .FirstOrDefault<UserSalary>();
 
-    //         throw new Exception("Failed to Update User Salary");
-    //     }
-    //     [HttpDelete("UserSalary/{userId}")]
-    //     public IActionResult DeleteUserSalary(int userId)
-    //     {
-    //         string sql = @"DELETE FROM TutorialAppSchema.UserSalary WHERE UserId = " + userId;
+        if (userSalaryDb != null)
+        {
+            _entityFramework.UserSalary.Remove(userSalaryDb);
+            if (_entityFramework.SaveChanges() > 0)
+            {
+                return Ok();
+            }
 
-    //         if (_dapper.ExecuteSql(sql))
-    //         {
-    //             return Ok();
-    //         }
+            throw new Exception("Failed to Delete User Salary");
+        }
+        throw new Exception("Failed to Get User Salary");
+    }
 
-    //         throw new Exception("Failed to Delete User Salary");
-    //     }
+    //////////////////////////////////////////
+    /// User Job Info
+    //////////////////////////////////////////
 
-    //     //////////////////////////////////////////
-    //     /// User Job Info
-    //     //////////////////////////////////////////
+    [HttpGet("UserJobInfo/{userId}")]
+    public IActionResult GetUserJobInfo(int userId)
+    {
+        UserJobInfo? userJobInfo = _entityFramework.UserJobInfo
+            .Where(u => u.UserId == userId)
+            .FirstOrDefault<UserJobInfo>();
 
-    //     [HttpGet("UserJobInfo/{userId}")]
-    //     public IActionResult GetUserJobInfo(int userId)
-    //     {
-    //         string sql = @"SELECT UserJobInfo.UserId,
-    //             UserJobInfo.JobTitle,
-    //             UserJobInfo.Department
-    //         FROM TutorialAppSchema.UserJobInfo
-    //         WHERE UserId = " + userId.ToString();
+        if (userJobInfo != null)
+        {
+            return Ok(userJobInfo);
+        }
+        throw new Exception("Failed to Get User JobInfo");
+    }
 
-    //         UserJobInfo userJobInfo = _dapper.LoadDataSingle<UserJobInfo>(sql);
+    [HttpPost("UserJobInfo")]
+    public IActionResult PostUserJobInfo(UserJobInfo userJobInfoForInsert)
+    {
+        UserJobInfo userJobInfoDb = new UserJobInfo();
 
-    //         return Ok(userJobInfo);
-    //     }
+        userJobInfoDb.UserId = userJobInfoForInsert.UserId;
+        userJobInfoDb.Department = userJobInfoForInsert.Department;
+        userJobInfoDb.JobTitle = userJobInfoForInsert.JobTitle;
+        _entityFramework.UserJobInfo.Add(userJobInfoDb);
 
-    //     [HttpPost("UserJobInfo")]
-    //     public IActionResult PostUserJobInfo(UserJobInfo userJobInfoForInsert)
-    //     {
-    //         string sql = @"
-    //         INSERT INTO TutorialAppSchema.UserJobInfo(
-    //             UserId,
-    //             Department,
-    //             JobTitle
-    //         ) VALUES (" + userJobInfoForInsert.UserId
-    //             + ", '" + userJobInfoForInsert.Department
-    //             + "', '" + userJobInfoForInsert.JobTitle
-    //             + "')";
+        if (_entityFramework.SaveChanges() > 0)
+        {
+            return Ok(userJobInfoForInsert);
+        }
 
-    //         if (_dapper.ExecuteSql(sql))
-    //         {
-    //             return Ok(userJobInfoForInsert);
-    //         }
+        throw new Exception("Failed to Add User JobInfo");
+    }
 
-    //         throw new Exception("Failed to Add User JobInfo");
-    //     }
-    //     [HttpPut("UserJobInfo")]
-    //     public IActionResult PutUserJobInfo(UserJobInfo userJobInfoForUpdate)
-    //     {
-    //         string sql = @"
-    //         UPDATE TutorialAppSchema.UserJobInfo
-    //         SET Department = '" + userJobInfoForUpdate.Department +
-    //         "', JobTitle = '" + userJobInfoForUpdate.JobTitle +
-    //         "' WHERE UserId = " + userJobInfoForUpdate.UserId.ToString();
+    [HttpPut("UserJobInfo")]
+    public IActionResult PutUserJobInfo(UserJobInfo userJobInfoForUpdate)
+    {
+        UserJobInfo? userJobInfoDb = _entityFramework.UserJobInfo
+            .Where(u => u.UserId == userJobInfoForUpdate.UserId)
+            .FirstOrDefault<UserJobInfo>();
 
-    //         if (_dapper.ExecuteSql(sql))
-    //         {
-    //             return Ok(userJobInfoForUpdate);
-    //         }
+        if (userJobInfoDb != null)
+        {
+            userJobInfoDb.Department = userJobInfoForUpdate.Department;
+            userJobInfoDb.JobTitle = userJobInfoForUpdate.JobTitle;
+            if (_entityFramework.SaveChanges() > 0)
+            {
+                return Ok(userJobInfoForUpdate);
+            }
 
-    //         throw new Exception("Failed to Update User JobInfo");
-    //     }
-    //     [HttpDelete("UserJobInfo/{userId}")]
-    //     public IActionResult DeleteUserJobInfo(int userId)
-    //     {
-    //         string sql = @"DELETE FROM TutorialAppSchema.UserJobInfo WHERE UserId = " + userId.ToString();
+            throw new Exception("Failed to Update User JobInfo");
+        }
+        throw new Exception("Failed to Get User JobInfo");
+    }
 
-    //         if (_dapper.ExecuteSql(sql))
-    //         {
-    //             return Ok();
-    //         }
+    [HttpDelete("UserJobInfo/{userId}")]
+    public IActionResult DeleteUserJobInfo(int userId)
+    {
+        UserJobInfo? userJobInfoDb = _entityFramework.UserJobInfo
+            .Where(u => u.UserId == userId)
+            .FirstOrDefault<UserJobInfo>();
 
-    //         throw new Exception("Failed to Delete User JobInfo");
-    //     }
+        if (userJobInfoDb != null)
+        {
+            _entityFramework.UserJobInfo.Remove(userJobInfoDb);
+            if (_entityFramework.SaveChanges() > 0)
+            {
+                return Ok();
+            }
+
+            throw new Exception("Failed to Delete User JobInfo");
+        }
+        throw new Exception("Failed to Get User JobInfo");
+    }
 }
