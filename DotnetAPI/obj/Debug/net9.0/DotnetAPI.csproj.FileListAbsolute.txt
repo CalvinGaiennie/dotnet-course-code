@@ -90,3 +90,4 @@
 /Users/calvingaiennie/Documents/GitHub/dotnet-course-code/DotnetAPI/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll
 /Users/calvingaiennie/Documents/GitHub/dotnet-course-code/DotnetAPI/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.dll
 /Users/calvingaiennie/Documents/GitHub/dotnet-course-code/DotnetAPI/bin/Debug/net9.0/Microsoft.Extensions.Logging.dll
+/Users/calvingaiennie/Documents/GitHub/dotnet-course-code/DotnetAPI/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
