@@ -42,7 +42,7 @@ namespace DotnetApi.Helpers
             {
                 Subject = new ClaimsIdentity(claims),
                 SigningCredentials = credentials,
-                Expires = DateTime.Now.AddDays(1),
+                Expires = DateTime.Now.AddDays(7),
             };
 
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
