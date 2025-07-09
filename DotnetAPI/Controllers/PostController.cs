@@ -3,7 +3,6 @@ using DotnetApi.Dtos;
 using DotnetApi.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualBasic;
 
 namespace DotnetApi.Controllers
 {
