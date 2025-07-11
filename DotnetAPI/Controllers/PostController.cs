@@ -75,24 +75,6 @@ namespace DotnetApi.Controllers
             throw new Exception("Failed to create new post!");
         }
 
-        [HttpPut("Post")]
-        public IActionResult EditPost(PostToEditDto postToEdit)
-        {
-            string sql = @"
-            UPDATE TutorialAppSchema.Posts
-                SET PostContent = '" + postToEdit.PostContent +
-                "', PostTitle = '" + postToEdit.PostTitle +
-                @"', PostUpdated = GETDATE()
-                    WHERE PostId = " + postToEdit.PostId.ToString() +
-                    " AND UserID = " + this.User.FindFirst("userId")?.Value;
-
-            if (_dapper.ExecuteSql(sql))
-            {
-                return Ok();
-            }
-
-            throw new Exception("Failed to edit new post!");
-        }
         [HttpDelete("Post/{postId}")]
         public IActionResult DeletePost(int postId)
         {
