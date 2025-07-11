@@ -72,7 +72,7 @@ namespace DotnetApi.Controllers
                             "', @Email = '" + userForRegistration.Email +
                             "', @Gender = '" + userForRegistration.Gender +
                             "', @Active = 1" +
-                            "', @JobTitle = '" + userForRegistration.JobTitle +
+                            ", @JobTitle = '" + userForRegistration.JobTitle +
                             "', @Department = '" + userForRegistration.Department +
                             "', @Salary = '" + userForRegistration.Salary +
                             "'";
